@@ -1,0 +1,4 @@
+{"headers":{"normalizedNames":{},"lazyUpdate":null},"status":428,"statusText":"OK","url":"http://localhost:9000/
+cas0101","ok":false,"name":"HttpErrorResponse","message":"Http failure response for http://localhost:9000/cas0101: 428 OK","error":
+{"id":18728068212800,"timestamp":1611936578077,"exception":"br.com.multitec.utils.ValidacaoException","message":"Usuário ou senha
+inválido","path":"/cas0101"}}

@@ -1,0 +1,16 @@
+{
+	"headers": {
+		"normalizedNames": {
+			
+		},
+		"lazyUpdate": null
+	},
+	"status": 428,
+	"statusText": "OK",
+	"url": {
+		"id": 18728068212800,
+		"timestamp": 1611936578077,
+		"exception": "br.com.multitec.utils.ValidacaoException",
+		"message": "Usuárioousenhainválido","path":"/cas0101"
+	}
+}
