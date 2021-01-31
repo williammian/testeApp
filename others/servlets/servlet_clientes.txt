@@ -1,0 +1,50 @@
+multitec.servlets.endpoint.Clientes
+
+Busca Clientes
+
+--------------------------------------
+
+package multitec.servlets.endpoint;
+
+
+import sam.dto.samdev.DashboardMetadata
+import sam.dto.samdev.DashboardMetadata.TipoDashboard
+import sam.server.samdev.relatorio.ServletBase
+import org.springframework.http.ResponseEntity
+import org.springframework.http.MediaType
+import sam.model.entities.ab.Abe01
+import java.util.List
+import br.com.multitec.utils.collections.TableMap
+
+public class Clientes extends ServletBase {
+	
+	@Override
+	public String getNome() throws Exception {
+		return "multitec.servlets.endpoint.Clientes";
+	}
+
+	@Override
+	public DashboardMetadata getMetadata() throws Exception {
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<Object> executar() {
+
+		List<TableMap> listTMClientes = buscarClientes();
+	
+		return ResponseEntity.ok()
+			.contentType(MediaType.APPLICATION_JSON)
+			.body(listTMClientes);
+	}
+
+	private List<TableMap> buscarClientes() {
+		return session.createQuery(" SELECT abe01id, abe01codigo, abe01na, abe01ni",
+						       " FROM Abe01",
+							  " WHERE abe01cli = :cli",
+							  //samWhere.getWherePadrao("AND", Abe01.class),
+							  " ORDER BY abe01codigo")
+					  .setParameter("cli", 1)
+					  .getListTableMap();
+	}
+}

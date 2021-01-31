@@ -3,7 +3,9 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>SAM</ion-list-header>
+          <ion-list-header>
+            <img src="assets/img/Sam4-Logo_Sam-Sem-Texto.png" height="39" width="99"/>
+          </ion-list-header>
           <ion-note>www.multitecsistemas.com.br</ion-note>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
@@ -12,6 +14,7 @@
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
+
         </ion-list>
 
       </ion-content>

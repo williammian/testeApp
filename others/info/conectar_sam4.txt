@@ -1,0 +1,71 @@
+Servlet
+
+package multitec.servlets.endpoint;
+
+
+import sam.dto.samdev.DashboardMetadata
+import sam.dto.samdev.DashboardMetadata.TipoDashboard
+import sam.server.samdev.relatorio.ServletBase
+import org.springframework.http.ResponseEntity
+import org.springframework.http.MediaType
+
+public class Teste extends ServletBase {
+	
+	@Override
+	public String getNome() throws Exception {
+		return "multitec.servlets.endpoint.Teste";
+	}
+
+	@Override
+	public DashboardMetadata getMetadata() throws Exception {
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<Object> executar() {
+		String p1 = httpServletRequest.getParameter("p1");
+	
+		String teste = "Teste endpoint ";
+
+		if(p1 != null) teste = teste + p1;
+	
+		return ResponseEntity.ok()
+			.contentType(MediaType.TEXT_PLAIN)
+			.body(teste);
+	}
+}
+
+---------------------------------------------------
+
+para fazer login:
+
+POST
+localhost:9000/cas0101
+
+header
+Accept application/json
+
+Body
+{
+    "aab10user" : "MASTER",
+    "aab10senha" : "master"
+}
+
+-----------------------------------------------------
+
+obter o hash da resposta
+"hash": "ee8ffba1-9bd3-4a62-8f91-2904704ee6b8"
+
+fazer GET
+http://localhost:9000/servlet/run?name=multitec.servlets.endpoint.Teste&p1=123
+header
+x-auth-token
+com o hash obtido
+
+-------------------------------------------------------
+
+Usando hash da Api (sem necessidade de autenticação)
+
+no header usar
+api-user-header
+e o valor do hash

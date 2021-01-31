@@ -3,8 +3,13 @@
     <ion-grid>
       <ion-row>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <img src="assets/img/Sam4-Logo_Sam-Sem-Texto.png"/>
           <div>
+            <img src="assets/img/Sam4-Logo_Sam-Sem-Texto.png"/>
+          </div>
+          <div>
+            <ion-item>
+              <ion-input name="servidor" type="text" [(ngModel)]="servidor" placeholder="{{servidor ? servidor : 'Servidor (http://localhost:9000)'}}" required></ion-input>
+            </ion-item>
             <ion-item>
               <ion-input name="aab10user" type="text" placeholder="Usuário" ngModel required></ion-input>
             </ion-item>
@@ -13,7 +18,7 @@
             </ion-item>
           </div>
           <div>
-            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
+            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Entrar</ion-button>
           </div>
         </ion-col>
       </ion-row>

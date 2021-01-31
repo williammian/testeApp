@@ -9,5 +9,14 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-item>
+      <ion-label>Código</ion-label>
+      <ion-label>Nome</ion-label>
+    </ion-item>
+    <ion-item *ngFor="let cliente of clientes">
+      <ion-label>{{cliente.abe01codigo}}</ion-label>
+      <ion-label>{{cliente.abe01na}}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

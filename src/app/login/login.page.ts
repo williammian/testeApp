@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 import { ErrorHandlerService } from '../services/error-handler.service';
 import { LoginService } from '../services/login.service';
-import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -11,26 +10,26 @@ import { StorageService } from '../services/storage.service';
 })
 export class LoginPage implements OnInit {
 
+  servidor;
+
   constructor(private navCtrl : NavController, 
     private loginService: LoginService,
-    private storage: StorageService,
-    private error: ErrorHandlerService) { }
+    private error: ErrorHandlerService,
+    public menuCtrl: MenuController) {
+      localStorage.removeItem('usuario');
+      this.menuCtrl.swipeGesture(false);
+    }
 
   ngOnInit() {
+    this.servidor = localStorage.getItem('servidor');
   }
 
-  login(form){    
+  login(form){
     this.loginService.login(form.value).then((response: any) => {
       
-      let hash = response.hash;
-      this.storage.set("hash", hash);
-      console.log(hash);
-
-      this.storage.get("hash")
-      .then(
-        data => console.log(data)
-      );
-     
+      let usuario = `{ "nome": "${response.nome}", "hash": "${response.hash}", "empresa": "${response.empresa}"}`;
+      localStorage.setItem("usuario", usuario);
+           
       this.navCtrl.navigateForward('home');
     }).catch((response) => {
       this.error.handle(response);

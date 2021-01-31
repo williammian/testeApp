@@ -1,3 +1,4 @@
+import { LoginService } from './services/login.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
@@ -22,12 +23,14 @@ export class AppComponent implements OnInit {
       url: 'clientes',
       icon: 'people'
     }
+    
   ];
   
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private loginService: LoginService
   ) {
     this.initializeApp();
   }
@@ -45,4 +48,5 @@ export class AppComponent implements OnInit {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
   }
+
 }

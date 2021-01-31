@@ -11,7 +11,7 @@ export class MessageService {
   async warning(msg: any) {
     const toast = await this.toastController.create({
       message: msg,
-      duration: 2000,
+      duration: 3000,
       color: 'warning',
     });
     toast.present();
@@ -20,7 +20,7 @@ export class MessageService {
   async error(msg: any) {
     const toast = await this.toastController.create({
       message: msg,
-      duration: 2000,
+      duration: 3000,
       color: 'danger',
     });
     toast.present();

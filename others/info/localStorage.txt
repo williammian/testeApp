@@ -1,0 +1,6 @@
+let hash = response.hash;
+localStorage.setItem("hash", hash);
+console.log(hash);
+
+let hashLido = localStorage.getItem('hash');
+console.log(hashLido);
