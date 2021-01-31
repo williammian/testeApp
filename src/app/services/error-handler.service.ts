@@ -22,9 +22,21 @@ export class ErrorHandlerService {
     
         msg = 'Ocorreu um erro ao processar a sua solicitação';
 
-        if (errorResponse.status === 401 || errorResponse.status === 403) {
+        if (errorResponse.status === 401) {
+
+          try {
+            let exception = errorResponse.error.exception;
+            if(exception === "br.com.multitec.core.spring.exceptions.UnauthorizedException") {
+              msg = 'Você não tem permissão para executar esta ação';
+              this.loginService.logout();
+            }
+          } catch (e) { }
+
+        }else if (errorResponse.status === 403) {
+
           msg = 'Você não tem permissão para executar esta ação';
           this.loginService.logout();
+
         }else {
 
           try {

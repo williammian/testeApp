@@ -15,13 +15,19 @@ export class LoginPage implements OnInit {
   constructor(private navCtrl : NavController, 
     private loginService: LoginService,
     private error: ErrorHandlerService,
-    public menuCtrl: MenuController) {
-      localStorage.removeItem('usuario');
-      this.menuCtrl.swipeGesture(false);
-    }
+    public menuCtrl: MenuController) { }
 
   ngOnInit() {
+    localStorage.removeItem('usuario');
     this.servidor = localStorage.getItem('servidor');
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
+
+  ionViewDidLeave() {
+    this.menuCtrl.enable(true);
   }
 
   login(form){
