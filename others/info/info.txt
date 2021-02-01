@@ -1,0 +1,41 @@
+ionic g page pages/exemplo
+
+npm install -g cordova
+
+ionic cordova platform add android
+
+ionic cordova prepare android
+
+ionic cordova resources android --force
+
+ionic cordova run android --device
+
+npm i -g native-run
+
+cordova requirements android --verbose
+
+ionic cordova emulate android --target=Pixel_3a_API_30_x86
+
+---------------------------
+
+Instalar Android Studio
+
+Variáveis de ambiente
+
+ANDROID_SDK_ROOT
+C:\Users\User\AppData\Local\Android\sdk
+
+ANDROID_HOME
+C:\Users\User\AppData\Local\Android\sdk
+
+----------------------------
+
+No Android Studio
+
+Verificar sdk
+File > Settings > Appearence & Behavior > System Settings > Android SDK
+
+Verificar Virtual Devices
+Tools > AVD Manager
+
+--------------------------

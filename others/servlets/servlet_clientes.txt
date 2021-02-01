@@ -42,7 +42,7 @@ public class Clientes extends ServletBase {
 		return session.createQuery(" SELECT abe01id, abe01codigo, abe01na, abe01ni",
 						       " FROM Abe01",
 							  " WHERE abe01cli = :cli",
-							  //samWhere.getWherePadrao("AND", Abe01.class),
+							  getSamWhere().getWherePadrao("AND", Abe01.class),
 							  " ORDER BY abe01codigo")
 					  .setParameter("cli", 1)
 					  .getListTableMap();

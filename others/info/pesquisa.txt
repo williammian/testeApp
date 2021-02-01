@@ -1,0 +1,3 @@
+Loading ao consultar API
+
+https://github.com/nigelbpeck/ionic-4-angular-load-data-from-api
