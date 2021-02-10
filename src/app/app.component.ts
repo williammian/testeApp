@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -31,7 +33,8 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private http: HttpClient
+    private http: HttpClient,
+    private iab: InAppBrowser
   ) {
     this.initializeApp();
   }
@@ -67,15 +70,26 @@ export class AppComponent implements OnInit {
     console.log('Teste relatório 2');
 
     let usuario = JSON.parse(localStorage.getItem('usuario'));
-    let headers = new HttpHeaders({ 'x-auth-token': usuario.hash });
-
-    let url = `${environment.servidor}/#/report/ui/multitec.relatorios.cgs.CGS_Naturezas`
+   
+    let url = `${environment.servidor}/#/report/ui/multitec.relatorios.cgs.CGS_Naturezas/${usuario.hash}`
 
     window.open(url, '_blank');
     //url,
     //target, '_self' '_blank' '_system'
     //options
     
+  }
+
+  testeRelatorio3() {
+    console.log('Teste relatório 3');
+
+    let usuario = JSON.parse(localStorage.getItem('usuario'));
+
+    let url = `${environment.servidor}/#/report/ui/multitec.relatorios.cgs.CGS_Naturezas/${usuario.hash}`
+
+    const browser = this.iab.create(url);
+
+    browser.show();  
   }
 
 }
